@@ -1,29 +1,4 @@
--- =====================================================================
--- 3_gold_layer / 03_load_dimensions.sql   (Microsoft SQL Server / T-SQL)
--- ---------------------------------------------------------------------
--- Populates all dimension tables from the silver layer's master
--- dataset (silver.master_dataset), which is the output of the
--- cleaning + scraping notebooks in 2_silver_layer/.
---
--- Assumes silver.master_dataset has (at minimum) these columns, using
--- the same names as the merged Python dataframe:
---   country, city, room_type, room_shared, room_private,
---   host_is_superhost, multi, biz, day_type,
---   Cost_of_Living_Index, Rent_Index, Groceries_Index,
---   Restaurant_Price_Index, happiness_score, gdp_per_capita
---
--- SQL Server has no ON CONFLICT / UPSERT shorthand like Postgres, so
--- each insert uses a WHERE NOT EXISTS guard to avoid duplicate rows if
--- this script is re-run.
---
--- Run this AFTER 01_create_dimensions.sql and 02_create_fact_table.sql,
--- and BEFORE 04_load_fact_table.sql (the fact load depends on these
--- dimensions already being populated so it can look up surrogate keys).
--- =====================================================================
 
--- ---------------------------------------------------------------------
--- dim_country
--- ---------------------------------------------------------------------
 INSERT INTO gold.dim_country (
     country, cost_of_living_index, rent_index, groceries_index,
     restaurant_price_index, happiness_score, gdp_per_capita
