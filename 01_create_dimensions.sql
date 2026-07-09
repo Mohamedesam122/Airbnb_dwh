@@ -1,10 +1,4 @@
--- =====================================================================
--- 3_gold_layer / 01_create_dimensions.sql   (Microsoft SQL Server / T-SQL)
--- ---------------------------------------------------------------------
--- Creates all dimension tables for the Airbnb European Cities star
--- schema. Run this before 02_create_fact_table.sql, since the fact
--- table's foreign keys reference these tables.
--- =====================================================================
+
 
 IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = 'gold')
 BEGIN
