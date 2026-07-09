@@ -1,13 +1,4 @@
--- =====================================================================
--- 3_gold_layer / 02_create_fact_table.sql   (Microsoft SQL Server / T-SQL)
--- ---------------------------------------------------------------------
--- Creates the central fact table for the Airbnb European Cities star
--- schema. Grain: one row per individual Airbnb listing observation
--- (a listing is observed once as 'weekday' pricing and once as
--- 'weekend' pricing, per the source dataset's structure).
---
--- Run this AFTER 01_create_dimensions.sql.
--- =====================================================================
+
 
 IF OBJECT_ID('gold.fact_listings', 'U') IS NOT NULL
     DROP TABLE gold.fact_listings;
