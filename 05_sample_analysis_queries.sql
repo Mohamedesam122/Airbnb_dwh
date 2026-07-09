@@ -1,11 +1,3 @@
--- =====================================================================
--- 3_gold_layer / 05_sample_analysis_queries.sql   (Microsoft SQL Server / T-SQL)
--- ---------------------------------------------------------------------
--- A handful of ready-to-run queries against the star schema. Useful
--- for (a) sanity-checking the gold layer loaded correctly, and
--- (b) as a starting point for the Power BI visuals in 4_powerbi_dashboard/.
--- =====================================================================
-
 -- 1. Average price by city (weekday vs weekend), ranked highest first.
 SELECT
     dcity.city,
